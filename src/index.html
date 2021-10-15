@@ -2,12 +2,252 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Youtubesubs</title>
+  <title>Map That Talent</title>
+  <meta name="keyword" content="Talent Connect, Connect with people who have the same talent as you " >
+  <meta name="description" content="Connect With Subscribers and People Who Have The Same Talent as You">
+ <meta property="og:url"           content="https://map-that-talent.web.app/home" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Connect With Subscribers and People Who Have The Same Talent as You" />
+  <meta property="og:description"   content="Connect With Subscribers and People Who Have The Same Talent as You " />
+  <meta property="og:image"         content="https://firebasestorage.googleapis.com/v0/b/map-that-talent.appspot.com/o/mapthattalentlogo.jpg?alt=media&token=af229124-3332-4e84-925f-3b5cb6cb6cc7"  />
+  <meta property="og:image:width"          content="600px" />
+  <meta property="og:image:height"          content="600px" /> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" 
+crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+
+<style>
+.obscurity{
+  position: absolute; opacity: 0; z-index: -10; top:0px; left:0px;
+  height:0px; transition-duration: 2s; flex-direction: column;
+}
+.showobscure{
+  height: 90vh; width: 100vw; opacity: 1; background-color: white;
+  display:flex; justify-content: center; align-items: center;
+overflow: auto; z-index: 1000000000;
+}
+canvas{
+  max-width: 100%; height:auto;
+}
+.footer{
+  margin: 0;
+    position: absolute;
+    top: 110vh;
+    width: 100vw;
+    z-index: -10;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 0;
+    background-color: #f5f5f7;
+    color: #515154;
+}
+textarea{
+  border:1px solid black;
+}
+.flexrow{
+  display: flex; justify-content: center; align-items: center; margin-bottom: 12px;
+
+}
+.margin5{
+  margin-right: 20px;
+}
+.margin2{
+  margin-right: 10px;
+}
+.flexcolumn{
+  display: flex; justify-content: center; align-items: center; flex-direction: row;
+  font-family: 'Dosis'; margin-bottom: 12px;
+}
+body{
+  margin: 0; padding: 0;
+}
+.closeicon{
+  color:red; margin-bottom: 10px;
+
+}
+.black{
+  color: black;
+  font-family: "Chakra Petch";
+  text-align: center; font-weight: bold;
+  font-size: 1.2em;
+}
+#obscure .closeicon .fas.fa-times{
+  position: relative;
+top: 0px;
+left: 0px;
+color: red;
+}
+.socialmedia a:link, .socialmedia a:visited{
+  text-decoration: none; color:black;
+}
+.socialmedia .margin2{
+  width:30px; height: 30px; border-radius: 100%;
+  display: flex; justify-content: center;
+  align-items: center; text-align: center;
+  box-shadow: 0px 0px 8px 0px rgb(20, 20, 20);
+}
+.socialmedia .fa-youtube{
+  color:#ffffff;
+}
+.socialmedia .fa-whatsapp{
+  color:#ffffff;
+}
+
+@media only screen and (min-width:1000px){
+
+  canvas{
+  max-width: 60%; 
+  
+
+}
+.showobscure{
+  height:max-content;
+}
+
+}
+
+
+
+
+</style>
+<body style="margin:0px; padding:0px;">
   <app-root></app-root>
+
+<div class="overall" style="width:100vw; height:100vh; position:absolute; top:0px; left:0px; 
+z-index:-10000;box-sizing: border-box; overflow: hidden;">
+<picture> 
+  <source srcset="/assets/backtwo.webp" type="image/webp">
+  <source srcset="/assets/backtwo.jpg" type="image/jpg">
+<img src="/assets/backtwo.jpg" alt="Youtube Subscribers" style="width:100%; height:100%;">
+</picture>
+</div>
+
+<div class="obscurity" id="obscure">
+  <div class="closeicon" onclick="closechart()"> <i class="fas fa-times"></i></div>
+  <div class="closeicon black" onclick="closechart()">
+  These are the Talent of Your Fellow Subscribers
+  </div>
+  <canvas id="heyhey" width="400px" height="400px" style="display:block; box-sizing:border-box;">
+    <p> Sorry, Your browser do not support canvas</p>
+  </canvas>
+  </div>
+  <footer class="footer">
+  
+    <div class="copyright flexcolumn" id="copyrightyear"></div>
+    <div class="copyright flexcolumn">
+  <div class="flexrow">
+    <a class="margin5" href="#"><i class="fab fa-youtube margin2"></i> <span class="margin5">Share </span></a>
+  <a  class="margin5" href="
+  
+  https://api.whatsapp.com/send?text=Connect With People Who Have The Same Talent As You https://map-that-talent.web.app/home">  <i class="fab fa-whatsapp margin2"></i> <span class="margin5">Share </span></a>
+    <div>
+  
+     </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+<script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script  src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script>
+document.getElementById("copyrightyear").innerHTML =`copyright &copy; ${new Date().getFullYear()}`;
+
+const firebaseConfig = {
+  //...
+  apiKey: "AIzaSyCbTSACPUh6FhU-nO7bH-0C9QvB-vMTzt8",
+  authDomain: "map-that-talent.firebaseapp.com",
+  databaseURL: "https://map-that-talent-default-rtdb.firebaseio.com",
+  projectId: "map-that-talent",
+  storageBucket: "map-that-talent.appspot.com",
+  messagingSenderId: "957443488779",
+  appId: "1:957443488779:web:2eadc67d1c6e7578e4db0e",
+  measurementId: "G-8MVM5L29DX"
+};
+function closechart(){
+  document.getElementById("obscure").className = document.getElementById("obscure").className.replace("showobscure", "");
+}
+
+const app =firebase.initializeApp(firebaseConfig);
+let db =firebase.database();
+function durodie(){
+  setTimeout(function(){
+  let category = document.getElementById("ofofo").innerText;
+  
+  console.log(category);
+  firebase.database().ref("category/"+category).get().then((datai)=>{
+  console.log(datai.val());
+  let arrayyii =[];
+  let objectmi = {};
+  let arrayobject = [];
+
+let keysarray = Object.keys(datai.val());
+keysarray.forEach((item, i) => {
+  console.log(item);
+  if(!arrayyii.includes(datai.val()[item])){
+    arrayyii.push(datai.val()[item])
+    objectmi[datai.val()[item]] = 1;
+  }else{
+    objectmi[datai.val()[item]] = parseInt(objectmi[datai.val()[item]])+1;
+  }
+
+});
+console.log(arrayyii);
+console.log(objectmi);
+Object.keys(objectmi).forEach((item, i) => {
+arrayobject[i] = objectmi[arrayyii[i]]
+console.log(i);
+});
+
+
+
+const data = {
+  labels: arrayyii,
+  datasets: [{
+    label: 'The Talent of Your Colleagues',
+    data: arrayobject,
+    backgroundColor: [
+      '#ed7d31',
+      '#a5a5a5',
+      '#4472c4',
+      '#ffc000',
+      '#716666',
+      '#e96671',
+      'rgb(191, 183, 155)',
+      '#a05997',
+      'rgb(158, 174, 186)',
+    '#e6d3e7',
+    '#92065d',
+    '#b3b4b8',
+    '#106f73',
+    '#928222'
+    ],
+    hoverOffset: 4
+  }]
+};
+console.log(data);
+document.getElementById("obscure").className += " showobscure";
+var ctx = document.getElementById('heyhey');
+var myChart = new Chart(ctx, {
+  type:'pie',
+  data:data
+  });
+  });}, 3500);
+}
+</script>
+
+
 </body>
 </html>

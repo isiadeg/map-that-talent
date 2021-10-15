@@ -1,0 +1,198 @@
+<div class="everything"> 
+    <div class="mapheader">
+        Let's Map That Talent
+    </div>
+    <div class="center">
+        <form [formGroup]="youtubeform" (ngSubmit)="save()">
+            <div class="form-header">
+                Sign Up / Connect
+            </div>
+            <div class="inputwrapper" >
+                <div class="input">
+                    <label for="specifictalent">
+                        Your Talent More Specifically
+                    </label>
+                    <input type="text" id="specifictalent" formControlName ="specificTalent">
+                    <div class="icon">
+                        <i class="fas fa-code-branch">
+                            
+                        </i>
+                    </div>
+                </div>
+                <div class="options" *ngIf="optionss"
+                [ngClass]='{
+                    "display" :displaydropdown
+                }'  >
+                       
+                    <div (click)="insertvalue(eachoption)" *ngFor="let eachoption of optionss" class="eachoption">
+                        {{eachoption}}
+                    </div>
+                    <div 
+                    *ngIf="youtubeform.get('specificTalent').value"
+                    class="eachoption" (click)="insertvalue(youtubeform.get('specificTalent').value)">
+                        {{'Use "' + youtubeform.get('specificTalent').value+ '"'}}
+                    </div>
+
+                </div>
+
+                
+
+                
+                <div class="red" *ngIf="errorMessages.specificTalent">
+                    <div *ngFor="let error of errorMessages.specificTalent">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="inputwrapper" >
+                <div class="input">
+                    <label for="youtubeusername" >
+                        What's Your Youtube Username
+                    </label>
+                    <input type="text" id="youtubeusername" formControlName ="youtubeUsername" >
+                    <div class="icon">
+                    <i class="far fa-user-circle">
+                        
+                    </i>
+                    </div>
+                </div>
+                <div class="red" *ngIf="errorMessages.youtubeUsername">
+                    <div *ngFor="let error of errorMessages.youtubeUsername">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="inputwrapper" >
+                <div class="input">
+                    <label for="fullname" >
+                        Full Name
+                    </label>
+                    <input type="text" id="fullname" formControlName ="fullname" >
+                    <div class="icon">
+                    <i class="far fa-user-circle">
+                        
+                    </i>
+                    </div>
+                </div>
+                <div class="red" *ngIf="errorMessages.fullname">
+                    <div *ngFor="let error of errorMessages.fullname">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="inputwrapper" style="margin-top:70px;">
+                <div class="input">
+                    <label for="email" class="labelup" style="top:-100%">
+                        What's Your Email <br>
+                        <span class="emailspan" >only if you want to connect to
+                            other users off the site
+                        </span>
+                    </label>
+                    <input type="text" id="email" formControlName ="email" >
+                    <div class="icon">
+                    <i class="far fa-envelope">
+
+                    </i>
+                    </div>
+                </div>
+                <div class="red" *ngIf="errorMessages.email">
+                    <div *ngFor="let error of errorMessages.email">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" [disabled]="!youtubeform.valid"
+            [title]="youtubeform.valid?'Submit':'You Have to Fill all Required Fields '"
+           value="{{valuesubmit?'Please Wait ...':'Submit'}}"  onclick="durodie();">
+            <div *ngIf="clicksubmit && !youtubeform.valid">
+
+            </div>
+            
+            
+        </form>
+    </div>
+
+</div>
+<div class="ofofo" id="ofofo" style="display:none;">{{id}}</div>
+
+
+<div class="fromtop boxshadow" *ngIf="largearr[1]">
+    <div class="closesection">
+        <i class="fas fa-times" (click)="no()"></i>
+    </div>
+    <div class="wordswithpadding">
+        You Share The Same Talent With Subscribers <span style="color:blue">{{largearr[0].fullname}}</span>, <span style="color:blue">{{largearr[1].fullname}}</span> and <span style="color:blue">{{largearr.length}}</span> others
+        <div class="anotherpadding">
+            Would You Like To See Their Talent?
+        </div>
+        <div class="yesorno">
+            <div class="yes" (click)="yes()">
+                Yes
+            </div>
+            <div class="no" (click)="no()">
+                No
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <div class="isestart nodisplay">
+        <div class="eachperson" *ngFor="let eyan of largearr; let i = index;">
+            <div class="eachpersonheader">
+                <div class="name">
+                    {{eyan.fullname}}
+                </div>
+                <div class="icon" (click)="openorclose(i)">
+                    <i class="fas fa-chevron-right" >
+
+                    </i>
+                </div>
+            </div>
+            <div class="eachpersonbody"  *ngIf="openthis[i]" >
+                <div class="eachcontact">
+                    <div class="icon">
+                        <i class="fas fa-code-branch">
+
+                        </i>
+                    </div>
+                    <div class="eachcontactinfo">
+                        {{eyan.subcategory}}
+                    </div>
+                </div>
+                <div class="eachcontact">
+                    <div class="icon">
+                        <i class="fab fa-youtube">
+
+                        </i>
+                    </div>
+                    <div class="eachcontactinfo">
+                      {{eyan.youtubeUsername}}
+                    </div>
+                </div>
+                <div class="eachcontact">
+                    <div class="icon">
+                        <i class="far fa-envelope">
+                            
+                        </i>
+                    </div>
+                    <div class="eachcontactinfo">
+                        {{eyan.email}}
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+
+ 
+    </div>
+</div>
+
+   

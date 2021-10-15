@@ -1,0 +1,57 @@
+<div class="everything"> 
+    <div class="mapheader">
+        Feedback
+    </div>
+    <div class="center">
+        <form [formGroup]="youtubeform" (ngSubmit)="save()">
+            <div class="form-header" >
+                Feedback 
+            </div>
+            
+            
+            
+
+            <div class="inputwrapper" style="margin-top:70px;">
+                <div class="input">
+                    <label for="email" class="labelup" style="margin-bottom:20px;">
+                        Please, Leave Us a Feedback on What  You Think We Can Do To Improve This Website
+                    </label>
+                    <textarea id="email" formControlName ="email" ></textarea>
+                    <div class="icon">
+                    <i class="far fa-envelope">
+
+                    </i>
+                    </div>
+                </div>
+                <div class="red" *ngIf="errorMessages.email">
+                    <div *ngFor="let error of errorMessages.email">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" [disabled]="!youtubeform.valid"
+            [title]="youtubeform.valid?'Submit':'You Have to Fill all Required Fields '"
+            value="{{valuesubmit?'Please Wait ...':'Submit'}}"  >
+            <div *ngIf="clicksubmit && !youtubeform.valid">
+
+            </div>
+            
+            
+        </form>
+    </div>
+
+</div>
+
+<div class="aarin" *ngIf = "submitted">
+    <div class="aarincontent">
+        <div class="closeaarin">
+            <i class="fas fa-times" (click)="closeaarinfn();">
+
+            </i>
+        </div>
+        J2day says "Thank You" for leaving a feedback
+    </div>
+        
+</div>
+

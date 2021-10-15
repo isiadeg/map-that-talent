@@ -1,0 +1,110 @@
+.flexcenter{
+ display:flex; justify-content: center; align-items: center;
+}
+
+header{
+    width: 100vw; box-sizing: border-box; overflow: hidden; height:55px; box-shadow: 0px 0px 10px 0.5px rgb(20 20 20);
+    position:fixed; top:0px; left:0px; z-index: 100000000;
+    background-image:url(/assets/backtwo.jpg); 
+}
+body{
+    margin:0px; padding:0px;
+}
+.hamburger{
+    height:100%; width:auto; flex-direction:column; position:absolute; left:20px; top:0px;
+}
+.hamburger .bar{
+    display:block; padding: 1.5px; width: 20px; margin: 2px;background-color: white;
+}
+.displaynormal{
+display:block;
+}
+.smallscreen{
+    transition:1s linear; width:0px; position: fixed; top:0px;left:0px;padding:0px; overflow: hidden;
+    box-sizing: border-box;  height:100vh; 
+}
+.smallscreensize{
+    width:220px; padding:20px; background-color: white;box-shadow: 0px 0px 10px 0.5px rgb(20 20 20);
+}
+.socialmedia{
+    height:100%; left:60px; position: absolute; top:0px; 
+}
+.facebook{
+    color:white; box-shadow: 0px 0px 8px 0px rgb(20 20 20); margin-right:8px;
+    border-radius:50%; width:30px; height:30px;
+}
+.socialmedia a{
+    text-decoration: none;
+}
+.largewrapper{
+    margin-top: 65px;
+}
+header ul li a:link{
+    color:white; text-decoration: none;
+}
+.active{
+    color: #ffcc00;
+}
+
+.smallscreen .closeicon{
+    position:absolute; right:8px; top: 8px; 
+}
+.smallscreen ul{
+    padding: 0px; list-style-type: none;
+}
+.bigscreen{
+    display: none;
+}
+.smallscreen ul li{
+    font-weight:bold;
+    margin-bottom:20px; font-family: 'Dosis',sans-serif; color: blue;
+    font-size: 1.3em; padding:8px 30px; border-radius: 20px;
+}
+
+ .smallscreen ul li a:visited{
+     color:blue;
+ }
+ .smallscreen ul li a:link{
+    color:blue;
+}
+ .smallscreen ul li a.active{
+    color: #ffcc00;
+}
+.smallscreen li{
+    background-color: #000810;
+}
+
+@media only screen and (min-width:1000px){
+    .smallscreensize{
+        
+    }
+    .hamburger{
+        
+    }
+    .socialmedia{
+        
+        
+    }
+    .bigscreen{
+        display:block;
+    }
+    .bigscreen ul{
+        padding:0px; list-style-type:none; 
+    }
+    .bigscreen ul li{
+        font-weight: bold;
+        display:inline; margin-right:20px; font-family: 'Dosis',sans-serif; color: white;
+        font-size: 1.3em; 
+    }
+
+     .bigscreen ul li a:visited{
+         color:white;
+     }
+     .bigscreen ul li a.active{
+        color: #ffcc00;
+    }
+    .bigscreen{
+        justify-content: flex-end;width: auto; height:100%; position:absolute; right:120px; 
+    }
+    
+}
