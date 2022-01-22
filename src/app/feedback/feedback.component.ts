@@ -95,7 +95,8 @@ pieChartData:any;
     console.log(this.largeObject[this.id])*/
     
     this.youtubeform= this.fb.group({
-      email:''
+      email: ['', Validators.required],
+      name:''
      
     })
     
@@ -122,14 +123,17 @@ pieChartData:any;
 
     let usersref = ref(db, "feedback" );
     
-
+    let month = ['Jan', 'Feb', 'Mar', 'Apr','May','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+     let realdate= new Date().getDate()+" "+month[new Date().getMonth()]+", "+new Date().getFullYear()+" - "+new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
     
     const pushusers = push(usersref);
 
     
       set(pushusers, {
      
-        email: this.youtubeform.value.email
+        email: this.youtubeform.value.email,
+        date: realdate,
+        name: this.youtubeform.value.name
         
       }).then(()=>{
        // alert("Thank you for leaving feedback")

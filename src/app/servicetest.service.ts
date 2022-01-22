@@ -26,33 +26,12 @@ const db= getDatabase();
 @Injectable({
   providedIn: 'root'
 })
-export class ConnectresolveService implements Resolve<any>{
-id:any;
+export class ServicetestService {
+id:any = "";
 
 
   constructor(private routi:ActivatedRoute) {
   
    }
-  resolve (route:ActivatedRouteSnapshot, state: RouterStateSnapshot){
-  
-  this.id = route.paramMap.get('id');
-    console.log(this.id)
-    let refi = ref(db, 'category/'+this.id )
-  return get(refi).then((snapshot)=>{
-    if(snapshot.val()){
-      let returnedarray=[];
-        for(let eyo in snapshot.val()){
-          returnedarray.push(snapshot.val()[eyo]);
-        }
-        console.log(returnedarray);
-      return returnedarray;
-    }else{
-    return [];
-    }
-  })
-  }
-
-  idi():Observable<string>{
-    return this.id as Observable<string>;
-  }
+ 
 }

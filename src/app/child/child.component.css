@@ -1,0 +1,32 @@
+.aarin{
+    position: absolute; top:0px; left:0px;
+    width:100vw; height:100vh; display:flex;
+    justify-content: center; align-items: center;
+ }
+ .aarincontent{
+    background-color: white;
+    font-family: 'Dosis', sans-serif;
+    padding:10px; width:90vw; margin:auto;
+    padding-top:20px; position:relative;
+    box-shadow: 0px 4px 50px 7px rgb(46 42 42);
+    text-align:center;
+ }
+ .closeaarin{
+    position:absolute;top:8px; right:20px; color:red;
+ }
+ .input .iconright{
+     border:none; left:80%; right:10px; 
+ }
+ .input .iconright span{
+    display:block; max-width:60%; max-height: 60%;
+ }
+ .everything{margin-top:0px;}
+ @media only screen and (min-width:1000px) {
+    .everything{margin-top:0px;}
+    .wordswithpadding{
+        font-size:1.2em; font-weight:bold;
+    }
+    .aarincontent{
+       width:50vw;
+    }
+}

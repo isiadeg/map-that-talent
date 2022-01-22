@@ -9,6 +9,11 @@ import {AboutComponent} from './about/about.component';
 import { ChartComponent } from './chart/chart.component';
 import {ContactComponent} from './contact/contact.component';
 import {FeedbackComponent} from './feedback/feedback.component';
+import { ChildComponent } from './child/child.component';
+import {AdminComponent} from './admin/admin.component';
+import {AdminGuard} from './admin.guard';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
+import { AdminresolverService } from './adminresolver.service';
 
 
 const routes: Routes = [
@@ -30,6 +35,15 @@ path: 'connect/:id', component: ConnectComponent, resolve: {connect: Connectreso
 },
 {
   path: "feedback", component: FeedbackComponent
+},
+{
+  path: "login", component: ChildComponent
+},
+{
+  path: "admin", component: AdminComponent, canActivate : [AdminGuard], resolve:{feedback: AdminresolverService}
+},
+{
+  path: "changepassword", component: UpdatepasswordComponent, canActivate : [AdminGuard]
 },
 {
   path: "", redirectTo: "/home", pathMatch: 'full'

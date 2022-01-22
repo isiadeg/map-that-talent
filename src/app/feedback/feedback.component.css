@@ -15,7 +15,7 @@
 }
 textarea{
     height: 200px;
-    width: 300px;
+    width: 280px;
 }
 .red{
    width:250px;padding-left: 65px;margin:auto;margin-top:15px;
@@ -222,11 +222,15 @@ background-color:green;}
    }
    .center{
        width:40%;
-   }
+   }wr
    .input{
        width:350px;
    }
    .red, .options{
        width:350px;
    }
+   textarea{
+      height: 200px;
+      width: 300px;
+  }
 }

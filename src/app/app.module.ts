@@ -14,6 +14,9 @@ import { ChartComponent } from './chart/chart.component';
 import { ContactComponent } from './contact/contact.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ChildComponent } from './child/child.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginService } from './login.service';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,16 @@ import { ChildComponent } from './child/child.component';
     ChartComponent,
     ContactComponent,
     FeedbackComponent,
-    ChildComponent
+    ChildComponent,
+    AdminComponent,
+    UpdatepasswordComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: LoginService, useClass:LoginService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

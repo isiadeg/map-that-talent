@@ -8,15 +8,42 @@
                 Feedback 
             </div>
             
+            <div class="inputwrapper" style="margin-top:65px;">
+                <div class="input"  style="height:50px;">
+                    <label for="fullname" style="top:-100%; position:absolute;" >
+                         Name <br>
+                        <span class="emailspan" >only if you want to, otherwise, just put down an anonymous name
+                        </span>
+                    </label>
+                     
+                    <input type="text" id="name" formControlName ="name"  style="
+                    display: block;
+                    padding-left: 60px;">
+                    <div class="icon" style="display:flex;">
+                    <i class="far fa-user-circle">
+
+                    </i>
+                    </div>
+                </div>
+                <div class="red" *ngIf="errorMessages.name">
+                    <div *ngFor="let error of errorMessages.name">
+                        {{error}}
+                    </div>
+                </div>
+            </div>
+
+           
+
+            
             
             
 
-            <div class="inputwrapper" style="margin-top:70px;">
+            <div class="inputwrapper" style="margin-top:40px;">
                 <div class="input">
                     <label for="email" class="labelup" style="margin-bottom:20px;">
                         Please, Leave Us a Feedback on What  You Think We Can Do To Improve This Website
                     </label>
-                    <textarea id="email" formControlName ="email" ></textarea>
+                    <textarea id="email" formControlName ="email" style="padding:5px;" ></textarea>
                     <div class="icon">
                     <i class="far fa-envelope">
 

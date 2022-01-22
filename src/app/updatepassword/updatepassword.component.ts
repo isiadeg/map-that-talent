@@ -46,10 +46,10 @@ const db = getDatabase();
 
 @Component({
   selector: 'app-feedback',
-  templateUrl: './child.component.html',
-  styleUrls: ['../connect/connect.component.css', './child.component.css']
+  templateUrl: './updatepassword.component.html',
+  styleUrls: ['../connect/connect.component.css', '../child/child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class UpdatepasswordComponent implements OnInit {
 errorMessages:any={};
 pickerror:any ={
   required: "This Field is Required",
@@ -67,6 +67,7 @@ resolvedData:any;
 largearr:any[] = [];
 sublargearr:any[] =[];
 valuesubmit:boolean =false;
+updatemessage:boolean= false;
   constructor(private fb:FormBuilder,private route:ActivatedRoute,
               private loginservice:LoginService, private router:Router) { }
 youtubeform: FormGroup;
@@ -106,16 +107,12 @@ pieChartData:any;
     console.log(this.largeObject[this.id])*/
     
     this.youtubeform= this.fb.group({
-      email:['', [Validators.required, Validators.email]],
+     
       password:['', [Validators.required, Validators.minLength(6)]]
      
     })
     
 
-    let email = this.youtubeform.get('email');
-    email.valueChanges.pipe((debounceTime(1000))).subscribe((value)=>{
-      this.seterror(email, 'email');
-    })
    
     let password = this.youtubeform.get('password');
     password.valueChanges.pipe((debounceTime(1000))).subscribe((value)=>{
@@ -172,20 +169,22 @@ pieChartData:any;
     console.log(this.youtubeform.value);
     console.log({
      
-      email: this.youtubeform.value.email
+      password: this.youtubeform.value.password
     })
-  let bbool = await this.loginservice.login(this.youtubeform.value.email, this.youtubeform.value.password);
+  let bbool = await this.loginservice.changepassword(this.youtubeform.value.password);
    if(bbool){
     this.loginerror ="";
+    this.updatemessage = true;
     this.valuesubmit = false;
-    this.router.navigate([`/${this.loginservice.url}`]);
+   setTimeout(()=>{ this.router.navigate([`/admin`]);}, 2000);
    }else{
      this.loginerror = this.loginservice.loginerror;
      this.valuesubmit = false;
+     this.updatemessage = true;
    }
   }
 closeaarinfn(){
-  this.loginerror ="";
+  this.updatemessage = false;
 }
 
 

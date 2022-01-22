@@ -26,7 +26,7 @@ const db= getDatabase();
 @Injectable({
   providedIn: 'root'
 })
-export class ConnectresolveService implements Resolve<any>{
+export class AdminresolverService implements Resolve<any>{
 id:any;
 
 
@@ -35,9 +35,9 @@ id:any;
    }
   resolve (route:ActivatedRouteSnapshot, state: RouterStateSnapshot){
   
-  this.id = route.paramMap.get('id');
-    console.log(this.id)
-    let refi = ref(db, 'category/'+this.id )
+  //this.id = route.paramMap.get('id');
+   // console.log(this.id)
+    let refi = ref(db, 'feedback' )
   return get(refi).then((snapshot)=>{
     if(snapshot.val()){
       let returnedarray=[];
