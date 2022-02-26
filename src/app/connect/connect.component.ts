@@ -168,13 +168,22 @@ let label = document.getElementsByTagName("input");
 for(let i=0; i<label.length;i++){
   label[i].addEventListener('focus', ()=>{
     document.getElementsByTagName("label")[i].className += " labelup"
+    if(i == 1){
+      document.getElementsByTagName("label")[i].className += " labelup2"
+    }
   })
 label[i].addEventListener
   
   label[i].addEventListener('blur', ()=>{
     if(label[i].value == ""){
     document.getElementsByTagName("label")[i].className = document.getElementsByTagName("label")[i].className.replace(/labelup/gi, "");
-    }
+  
+    if(i == 1){
+    document.getElementsByTagName("label")[i].className = document.getElementsByTagName("label")[i].className.replace(/labelup2/gi, "");
+ 
+    }  
+  }
+
   })
 }
   document.getElementById("specifictalent").

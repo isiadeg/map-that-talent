@@ -47,7 +47,7 @@
             
             <div class="inputwrapper" >
                 <div class="input">
-                    <label for="youtubeusername" >
+                    <label for="youtubeusername">
                         What's Your Youtube Username
                     </label>
                     <input type="text" id="youtubeusername" formControlName ="youtubeUsername" >
@@ -127,7 +127,7 @@
         <i class="fas fa-times" (click)="no()"></i>
     </div>
     <div class="wordswithpadding">
-        You Share The Same Talent With Subscribers <span style="color:blue">{{largearr[0].fullname}}</span>, <span style="color:blue">{{largearr[1].fullname}}</span> and <span style="color:blue">{{largearr.length}}</span> others
+        You Share The Same Talent With Subscribers <span style="color:blue">{{largearr[0].fullname}}</span>, <span style="color:blue">{{largearr[1]?largearr[1].fullname:''}}</span> and <span style="color:blue">{{largearr.length-2 >0?largearr.length-2+' others':''}}</span>
         <div class="anotherpadding">
             Would You Like To See Their Talent?
         </div>
