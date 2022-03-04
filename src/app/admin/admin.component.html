@@ -1,7 +1,7 @@
 <div class="aboutheader">
     Feedbacks
 </div>
-<div class="aboutwords">
+<div class="aboutwords" *ngIf="!feedback.error">
   <div class="eachfeedback" *ngFor="let eachfeedback of feedback">
       <div class="flexornot">
     <div class="date" *ngIf="eachfeedback.date" style="margin-right: 40px;">
@@ -25,6 +25,19 @@
 <div class="fixedright" (click)="logout();">
     Logout
 </div>
+
+<div class="aarin" *ngIf = "submitted" style="color:red;">
+    <div class="aarincontent">
+        <div class="closeaarin">
+            <i class="fas fa-times" (click)="closeaarinfn();">
+
+            </i>
+        </div>
+        {{feedback.error?feedback.error:'No Feedback Yet'}}
+    </div>
+        
+</div>
+
 
 
 

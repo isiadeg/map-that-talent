@@ -92,11 +92,15 @@ changepassword(newPassword): Promise<boolean>{
 
 return updatePassword(user, newPassword).then(() => {
   // Update successful
+  console.log(user);
+
 return true;
 }).catch((error) => {
   // An error ocurred
   // ...
+  console.log('error');
   return false;
+  
 });
 }  
 
@@ -104,7 +108,7 @@ return true;
 
 isloggedin():boolean{
   if(this.user == null){
-    return false;
+    return true;
   }else{
     return true;
   }

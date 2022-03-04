@@ -9,13 +9,22 @@ import { LoginService } from '../login.service';
 })
 export class AdminComponent implements OnInit {
     feedback:any;
+    submitted:boolean = false;
   constructor(private route:ActivatedRoute, private router:Router,
               private loginservice:LoginService) { }
 
   ngOnInit(): void {
     this.feedback = this.route.snapshot.data['feedback'];
-    this.feedback.reverse();
+    
     console.log(this.feedback);
+    if(this.feedback.error){
+      this.submitted = true;
+    }else{
+      if(this.feedback.length == 0){
+        this.submitted = true;
+      }
+      this.feedback.reverse();
+    }
 
   }
 
@@ -28,4 +37,10 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  closeaarinfn(){
+    this.submitted = false;
+  }
+  
+
 }
+

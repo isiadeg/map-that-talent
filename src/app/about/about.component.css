@@ -3,11 +3,25 @@
 }
 .aboutwords{
     line-height: 27px;
-    text-align: center; padding:20px; box-shadow: 2px 2px 7px 3px rgb(20,20,20); width:80vw; 
+    text-align: center; padding:20px; padding-bottom:10px; box-shadow: 2px 2px 7px 3px rgb(20,20,20); width:80vw; 
     margin:auto;margin-top: 20px; font-family:'Dosis'; font-size: 1.1em;background-color: white;
 }
 
-p{
+.bllue{
 color: #003265
+}
+
+.space{
+    display:inline-block; padding:0px 10px; text-decoration: none;
+    margin-top: 10px;  border-right: 1px solid #bbb;
+
+}
+@media only screen and (min-width:1024px){
+    .inlineorblock{
+        display: inline-block;
+    }
+    .space{
+        margin-top: auto;
+    }
 }
 

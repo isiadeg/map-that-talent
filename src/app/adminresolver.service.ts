@@ -49,6 +49,8 @@ id:any;
     }else{
     return [];
     }
+  }).catch(e=>{
+    return {error: e};
   })
   }
 

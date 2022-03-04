@@ -47,7 +47,7 @@ const db = getDatabase();
 @Component({
   selector: 'app-feedback',
   templateUrl: './updatepassword.component.html',
-  styleUrls: ['../connect/connect.component.css', '../child/child.component.css']
+  styleUrls: ['../connect/connect.component.css', '../child/child.component.css', './updatepassword.component.css']
 })
 export class UpdatepasswordComponent implements OnInit {
 errorMessages:any={};
@@ -172,13 +172,15 @@ pieChartData:any;
       password: this.youtubeform.value.password
     })
   let bbool = await this.loginservice.changepassword(this.youtubeform.value.password);
+  console.log(bbool);
    if(bbool){
     this.loginerror ="";
     this.updatemessage = true;
     this.valuesubmit = false;
    setTimeout(()=>{ this.router.navigate([`/admin`]);}, 2000);
    }else{
-     this.loginerror = this.loginservice.loginerror;
+     this.loginerror = true;
+     console.log(this.loginerror);
      this.valuesubmit = false;
      this.updatemessage = true;
    }
