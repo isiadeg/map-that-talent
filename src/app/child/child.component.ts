@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import {FormBuilder, FormGroup, AbstractControl} from '@angular/forms';
+import {FormBuilder, FormGroup, AbstractControl, NgForm} from '@angular/forms';
 import{debounceTime} from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../login.service';
@@ -56,6 +56,11 @@ pickerror:any ={
   email:"Please, Enter a Valid Email ",
   minlength: "Password cannot be less than 6 characters"
 }
+resetMessage:string="";
+resetSuccess:string="";
+resetError:string="";
+overlay2:boolean = false;
+emailpopup:boolean = false;
 submitted:boolean = false;
 submiterror:string;
 id:any;
@@ -205,4 +210,37 @@ showpp(){
   this.showpass = !this.showpass;
 }
 
+openpopup(){
+  this.overlay2 = true;
+  this.emailpopup = true;
+}
+closepopup(){
+  this.overlay2 = false;
+  this.emailpopup = false;
+}
+async reseti(){
+  console.log('reset')
+  this.valuesubmit = true;
+  try{
+let wwait = await this.loginservice.resetPassword(this.youtubeform.value.email);
+console.log(wwait);
+if(wwait == "successfull"){
+  this.resetMessage = "true";
+  this.valuesubmit = false;
+  this.closepopup();
+  this.resetSuccess =`
+  A password reset link has been sent to your email. Please go to your email to reset the password`;
+}else{
+  this.resetMessage = "true";
+  this.resetError = wwait;
+  this.valuesubmit = false;
+  this.closepopup();
+}  
+}catch(e){
+alert(e);
+  }
+}
+closeaarinfn2(){
+  this.resetMessage ="";
+}
 }

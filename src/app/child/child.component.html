@@ -49,6 +49,10 @@
                         {{error}}
                     </div>
                 </div>
+                <div class="under" (click)="openpopup()">
+                    Having Troubles With Authentication?<br>
+                    Reset Your Password
+                </div>
             </div>
 
             <input type="submit" [disabled]="!youtubeform.valid"
@@ -75,6 +79,56 @@
         
 </div>
 
+<div class="overlay2"
+*ngIf="overlay2">
 
+</div>
+<div class="emailpopup" *ngIf="emailpopup">
+<div class="center">
+    <div class="closeemailpop">
+        <i class="fas fa-times" (click)="closepopup()"></i>
+    </div>
+    <form [formGroup]="youtubeform">
+        <div class="form-header">
+            Reset Password
+        </div>
+        <div class="inputwrapper" >
+            <div class="input">
+                <label for="email" class="labelup" >
+                  Enter Your Email
+                    
+                </label>
+                <input type="text" id="email" formControlName ="email" >
+                <div class="icon">
+                <i class="far fa-envelope">
+
+                </i>
+                </div>
+            </div>
+            <div class="red" *ngIf="errorMessages.email">
+                <div *ngFor="let error of errorMessages.email">
+                    {{error}}
+                </div>
+            </div>
+        </div>    
+         
+        <input type="submit" [disabled]="!youtubeform.get('email').valid"
+        [title]="youtubeform.get('email').valid?'Submit':'You Have to Fill all Required Fields '"
+       value="{{valuesubmit?'Please Wait ...':'Submit'}}" (click)="reseti();" >
+    </form>
+</div>
+</div>
+
+<div class="aarin aarin2" *ngIf = "resetMessage">
+    <div class="aarincontent" [style.color]="resetError?'red':'green'">
+        <div class="closeaarin">
+            <i class="fas fa-times" (click)="closeaarinfn2();">
+
+            </i>
+        </div>
+        {{resetError?resetError:resetSuccess}}
+    </div>
+        
+</div>
 
    

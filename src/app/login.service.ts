@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { initializeApp } from 'firebase/app';
 import {getDatabase, set, ref, get, push} from 'firebase/database';
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updatePassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, 
+  sendPasswordResetEmail, updatePassword } from "firebase/auth";
 
 const auth = getAuth();
 
@@ -108,11 +109,27 @@ return true;
 
 isloggedin():boolean{
   if(this.user == null){
-    return true;
+    return false;
   }else{
     return true;
   }
 }
 
+resetPassword(email): Promise<string>{
+return sendPasswordResetEmail(auth, email)
+  .then(() => {
+    // Password reset email sent!
+    // ..
+    console.log("success")
+    return "successfull"
+    
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+    return errorMessage;
+  });
+}
 
 }
