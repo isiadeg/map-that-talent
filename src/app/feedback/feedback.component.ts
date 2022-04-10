@@ -73,9 +73,10 @@ largeObject:any={
 pieChartLabels:any[];
 pieChartData:any;
   pieChartType:any;
-
+add:boolean = false;
+feedbacki:any;
   ngOnInit(): void {
-
+    this.feedbacki = this.route.snapshot.data['feedback']
    
    /*this.resolvedData.forEach(element => {
       if(this.largeObject[this.id].find((ele)=>{
@@ -140,6 +141,7 @@ pieChartData:any;
        this.valuesubmit =  false;
        this.submitted = true;
        document.getElementsByTagName("textarea")[0].value = "";
+       this.add = false;
       }).catch((e)=>{
       this.submiterror = "An error occured"
     })
@@ -148,6 +150,8 @@ closeaarinfn(){
   this.submitted = false;
 }
 
-  
+  showadd(){
+    this.add = !this.add;
+  }
 
 }

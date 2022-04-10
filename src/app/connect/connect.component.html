@@ -5,7 +5,7 @@
     <div class="center">
         <form [formGroup]="youtubeform" (ngSubmit)="save()">
             <div class="form-header">
-                Sign Up / Connect
+                    Compare my talent with others
             </div>
             <div class="inputwrapper" >
                 <div class="input">
@@ -64,48 +64,6 @@
                 </div>
             </div>
 
-            <div class="inputwrapper" style="margin-top:70px;" >
-                <div class="input">
-                    <label for="fullname" style="top:-100%" >
-                        Full Name <br>
-                        <span class="emailspan" >only if you want to, otherwise, just put down an anonymous name
-                        </span>
-                    </label>
-                    <input type="text" id="fullname" formControlName ="fullname" >
-                    <div class="icon">
-                    <i class="far fa-user-circle">
-                        
-                    </i>
-                    </div>
-                </div>
-                <div class="red" *ngIf="errorMessages.fullname">
-                    <div *ngFor="let error of errorMessages.fullname">
-                        {{error}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="inputwrapper" style="margin-top:70px;">
-                <div class="input">
-                    <label for="email" class="labelup" style="top:-100%">
-                        What's Your Email <br>
-                        <span class="emailspan" >only if you want to connect to
-                            other users off the site
-                        </span>
-                    </label>
-                    <input type="text" id="email" formControlName ="email" >
-                    <div class="icon">
-                    <i class="far fa-envelope">
-
-                    </i>
-                    </div>
-                </div>
-                <div class="red" *ngIf="errorMessages.email">
-                    <div *ngFor="let error of errorMessages.email">
-                        {{error}}
-                    </div>
-                </div>
-            </div>
 
             <input type="submit" [disabled]="!youtubeform.valid"
             [title]="youtubeform.valid?'Submit':'You Have to Fill all Required Fields '"
@@ -122,16 +80,19 @@
 <div class="ofofo" id="ofofo" style="display:none;">{{id}}</div>
 
 
-<div class="fromtop boxshadow" *ngIf="largearr[1]">
+<div class="fromtop boxshadow" *ngIf="largearr[0]">
     <div class="closesection">
         <i class="fas fa-times" (click)="no()"></i>
     </div>
     <div class="wordswithpadding">
-        You Share The Same Talent With Subscribers <span style="color:blue">{{largearr[0].fullname}}</span>, <span style="color:blue">{{largearr[1]?largearr[1].fullname:''}}</span> and <span style="color:blue">{{largearr.length-2 >0?largearr.length-2+' others':''}}</span>
-        <div class="anotherpadding">
+        {{whattosay}}
+        <!-- <span style="color:blue">{{largearr[0].fullname}}</span>,
+          <span style="color:blue">{{largearr[1]?largearr[1].fullname:''}}</span>
+           and <span style="color:blue">{{largearr.length-2 >0?largearr.length-2+' others':''}}</span> -->
+        <div *ngIf="largearr[1]" class="anotherpadding">
             Would You Like To See Their Talent?
         </div>
-        <div class="yesorno">
+        <div class="yesorno" *ngIf="largearr[1]">
             <div class="yes" (click)="yes()">
                 Yes
             </div>
@@ -146,9 +107,10 @@
 
     <div class="isestart nodisplay">
         <div class="eachperson" *ngFor="let eyan of largearr; let i = index;">
+            <div *ngIf="eyan.youtubeUsername != youtubeform.value.youtubeUsername">
             <div class="eachpersonheader">
                 <div class="name">
-                    {{eyan.fullname}}
+                    {{eyan.youtubeUsername}}
                 </div>
                 <div class="icon" (click)="openorclose(i)">
                     <i class="fas fa-chevron-right" >
@@ -177,18 +139,8 @@
                       {{eyan.youtubeUsername}}
                     </div>
                 </div>
-                <div class="eachcontact">
-                    <div class="icon">
-                        <i class="far fa-envelope">
-                            
-                        </i>
-                    </div>
-                    <div class="eachcontactinfo">
-                        {{eyan.email}}
-                    </div>
-                </div>
-
                 
+            </div>
             </div>
         </div>
 

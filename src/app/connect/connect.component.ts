@@ -72,6 +72,7 @@ largeObject:any={
 pieChartLabels:any[];
 pieChartData:any;
   pieChartType:any;
+  whattosay:string="";
 
   ngOnInit(): void {
 
@@ -125,26 +126,17 @@ pieChartData:any;
 
     })
     this.youtubeform= this.fb.group({
-      email:['', Validators.email],
+      
       youtubeUsername: ['', Validators.required],
-      fullname: ['', Validators.required],
+
       specificTalent:['', Validators.required]
     })
     
 
     
 
-let email = this.youtubeform.get('email');
 
-email.valueChanges.pipe((debounceTime(1000))).subscribe((value)=>{
-  this.seterror(email, 'email');
-})
 
-let fullname = this.youtubeform.get('fullname');
-
-fullname.valueChanges.pipe((debounceTime(1000))).subscribe((value)=>{
-  this.seterror(fullname, 'fullname');
-})
 
 let youtubeUsername = this.youtubeform.get('youtubeUsername');
 youtubeUsername.valueChanges.pipe((debounceTime(1000))).subscribe((value)=>{
@@ -243,8 +235,7 @@ label[i].addEventListener
     console.log({
       category: this.id,
       subcategory: this.youtubeform.value.specificTalent,
-      email: this.youtubeform.value.email,
-      fullname:this.youtubeform.value.fullname,
+   
       youtubeUsername: this.youtubeform.value.youtubeUsername
     })
 
@@ -259,8 +250,8 @@ label[i].addEventListener
       set(pushusers, {
         category: this.id,
         subcategory: this.youtubeform.value.specificTalent,
-        email: this.youtubeform.value.email,
-        fullname:this.youtubeform.value.fullname,
+        email: '',
+        fullname: '',
         youtubeUsername: this.youtubeform.value.youtubeUsername
       }).then(()=>{
         get(usersref).then((snapshot)=>{
@@ -277,6 +268,30 @@ label[i].addEventListener
           }
 
           this.valuesubmit = false;
+          if(this.largearr.length>1){
+            let subscribersi = "";
+              if(this.largearr.length == 2 ){
+                for(let i=0; i<this.largearr.length; i++){
+                  if(this.largearr[i].youtubeUsername != this.youtubeform.value.youtubeUsername){
+                    subscribersi = `Subscriber ${this.largearr[i].youtubeUsername}`
+                  }
+               
+                }
+              }
+              else {
+                for(let i=0; i<2; i++){
+                  if(this.largearr[i].youtubeUsername != this.youtubeform.value.youtubeUsername){
+                    subscribersi += `Subscriber ${this.largearr[i].youtubeUsername}, `
+                  }
+               
+                }
+                subscribersi += `and ${this.largearr.length-3} others`;
+
+              }
+            
+            this.whattosay = `You share the same Talent with ${subscribersi}`;
+          }else{
+          this.whattosay = "We are yet to have other subscribers who share the same talent with you"}
           window.scrollTo({
             top:0,
             left:0

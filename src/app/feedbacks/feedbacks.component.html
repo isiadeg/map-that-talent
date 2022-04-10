@@ -1,0 +1,37 @@
+<div class="aboutheader">
+    Feedbacks
+</div>
+<div class="aboutwords" *ngIf="!feedback.error">
+  <div class="eachfeedback" *ngFor="let eachfeedback of feedback">
+      <div class="flexornot">
+    <div class="date" *ngIf="eachfeedback.date" style="margin-right: 40px;">
+        {{eachfeedback.date}}
+    </div> 
+    <div class="date" *ngIf="eachfeedback.name" style="margin-right: 40px;">
+        <i class="fas fa-user-circle" style="margin-right:10px"></i> {{eachfeedback.name}}
+    </div>
+    </div>
+
+    <div class="feedwords">
+        {{eachfeedback.email}}
+    </div>
+  </div>    
+</div>
+
+
+
+<div class="aarin" *ngIf = "submitted" style="color:red;">
+    <div class="aarincontent">
+        <div class="closeaarin">
+            <i class="fas fa-times" (click)="closeaarinfn();">
+
+            </i>
+        </div>
+        {{feedback.error?feedback.error:'No Feedback Yet'}}
+    </div>
+        
+</div>
+
+
+
+

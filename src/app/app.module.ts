@@ -17,6 +17,7 @@ import { ChildComponent } from './child/child.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginService } from './login.service';
 import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
+import { FeedbacksComponent } from './feedbacks/feedbacks.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpdatepasswordComponent } from './updatepassword/updatepassword.compone
     FeedbackComponent,
     ChildComponent,
     AdminComponent,
-    UpdatepasswordComponent
+    UpdatepasswordComponent,
+    FeedbacksComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
-<div class="everything"> 
+<div class="everything" *ngIf="add"> 
+    <div class="closeevery" (click)="showadd();">
+        <i class="fas fa-times"></i>
+    </div>
     <div class="mapheader">
         Feedback
     </div>
@@ -70,7 +73,7 @@
 
 </div>
 
-<div class="aarin" *ngIf = "submitted">
+<div class="aarin opo" *ngIf = "submitted">
     <div class="aarincontent">
         <div class="closeaarin">
             <i class="fas fa-times" (click)="closeaarinfn();">
@@ -82,3 +85,15 @@
         
 </div>
 
+<div class="everyoverlay" *ngIf="add">
+
+</div>
+
+<app-feedbacks [feedback]="feedbacki" (click)="showadd();">
+
+</app-feedbacks>
+
+<div class="fixedadd" (click)="showadd();">
+ <div class="mssg"> Leave A Feedback</div>
+    <i class="fas fa-plus"></i>
+</div>

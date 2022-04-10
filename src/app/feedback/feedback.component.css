@@ -2,7 +2,21 @@
     left:0px;width:100vw;
    min-height:100vh; padding:0px; margin:0px;
    justify-content:center; align-items: center;
-   display:flex;z-index:-10; margin-top: 110px;
+   display:flex;z-index:1000; margin-top: 110px;
+   position: absolute;
+
+}
+.closeevery{
+   position: absolute; border-radius: 50%;
+   width:25px; height:25px; background-color: white; color:red;
+   box-shadow: 2px 2px 10px 3px rgb(20,20,20);
+   top:60px; left:49vw; display: flex; justify-content: center;
+   align-items: center; z-index: 99999999999999999999;
+}
+.everyoverlay{
+   width:100vw; height:100vh; z-index:999; position: fixed;
+   top:0px; left:0px; background-color: blue; opacity:0.1
+
 }
 .center{
    width:90%; box-shadow: 2px 2px 10px 7px rgb(8 17 30);
@@ -197,6 +211,17 @@ background-color:green;}
 }
 .closeaarin{
    position:absolute;top:8px; right:20px; color:red;
+}
+.fixedadd{
+   padding:10px; 
+   width: 150px; border-radius: 20px; box-shadow: 2px 2px 10px 0px rgb(20,20,20);
+   position: fixed; bottom:20px; right:20px; display: flex; 
+   justify-content: space-between;background-color: blue; color:#ffcc00;
+   font-family: 'Dosis'; font-weight: bold;
+   
+}
+.opo{
+   z-index:99999999999999999999;
 }
 @media only screen and (min-width:1000px) {
    .wordswithpadding{

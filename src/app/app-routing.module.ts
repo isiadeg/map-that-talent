@@ -34,7 +34,8 @@ path: 'connect/:id', component: ConnectComponent, resolve: {connect: Connectreso
   path: "contact", component: ContactComponent
 },
 {
-  path: "feedback", component: FeedbackComponent
+  path: "feedback", component: FeedbackComponent, resolve:{feedback: AdminresolverService}
+
 },
 {
   path: "login", component: ChildComponent
@@ -45,6 +46,7 @@ path: 'connect/:id', component: ConnectComponent, resolve: {connect: Connectreso
 {
   path: "changepassword", component: UpdatepasswordComponent, canActivate : [AdminGuard]
 },
+
 {
   path: "", redirectTo: "/home", pathMatch: 'full'
 },
